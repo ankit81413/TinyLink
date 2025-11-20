@@ -32,6 +32,10 @@ export default function Navbar() {
               <li className="nav-item">
                 <Link className="nav-link active" to="/add-link">Add new link</Link>
               </li>
+
+              <li className="nav-item">
+                <a className="nav-link active" href="https://tinylink-kis1.onrender.com/healthz">Healthz url</a>
+              </li>
             </ul>
 
             {/* <form className="d-flex" role="search">
