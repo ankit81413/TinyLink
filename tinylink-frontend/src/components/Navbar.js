@@ -1,13 +1,14 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-
-          <a className="navbar-brand" href="#">TinyLink</a>
+          <Link className="navbar-brand" to="/">
+            TinyLink
+          </Link>
 
           <button
             className="navbar-toggler"
@@ -22,19 +23,26 @@ export default function Navbar() {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            
-
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                <Link className="nav-link active" aria-current="page" to="/">
+                  Home
+                </Link>
               </li>
 
               <li className="nav-item">
-                <Link className="nav-link active" to="/add-link">Add new link</Link>
+                <a
+                  className="nav-link active"
+                  href="https://tinylink-kis1.onrender.com/healthz"
+                >
+                  Healthz url
+                </a>
               </li>
 
               <li className="nav-item">
-                <a className="nav-link active" href="https://tinylink-kis1.onrender.com/healthz">Healthz url</a>
+                <Link className="nav-link active" to="/add-link">
+                  Add new link
+                </Link>
               </li>
             </ul>
 
@@ -47,10 +55,9 @@ export default function Navbar() {
               />
               <button className="btn btn-outline-light" type="submit">Search</button>
             </form> */}
-
           </div>
         </div>
       </nav>
     </>
-  )
+  );
 }
