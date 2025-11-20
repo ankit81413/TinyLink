@@ -15,12 +15,19 @@ function LinkTable() {
   }, []);
 
   const handleDelete = async (code) => {
+    const sure = window.confirm("Are you sure you want to delete this link?");
+    if (!sure) return;
+
     try {
       await api.delete(`/api/links/${code}`);
-      alert("Link deleted successfully!");
+
+      const toastElement = document.getElementById("deleteToast");
+      const toast = new window.bootstrap.Toast(toastElement);
+      toast.show();
+
       fetchLinks();
     } catch (error) {
-      alert("Failed to delete the link!");
+      alert("Failed to delete!");
     }
   };
 
@@ -71,7 +78,8 @@ function LinkTable() {
                 className="btn btn-warning p-2 fs-6 ms-1"
                 href={`${process.env.REACT_APP_API_URL}/${link.code}`}
                 target="_blank"
-                rel="noopener noreferrer">
+                rel="noopener noreferrer"
+              >
                 <i className="fa-solid fa-share"></i>
               </a>
             </td>
