@@ -15,8 +15,13 @@ function LinkTable() {
   }, []);
 
   const handleDelete = async (code) => {
-    await api.delete(`/api/links/${code}`);
-    fetchLinks();
+    try {
+      await api.delete(`/api/links/${code}`);
+      alert("Link deleted successfully!");
+      fetchLinks();
+    } catch (error) {
+      alert("Failed to delete the link!");
+    }
   };
 
   return (
