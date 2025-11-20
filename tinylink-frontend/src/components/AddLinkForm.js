@@ -36,7 +36,7 @@ function AddLinkForm() {
       />
 
       <input
-        type="text"
+        type="url"
         className="form-control mt-3"
         placeholder="Enter URL"
         value={url}
