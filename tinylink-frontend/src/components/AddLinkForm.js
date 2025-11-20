@@ -8,18 +8,29 @@ function AddLinkForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     let req = {
-        name : name,
-        url : url,
-        code : code || ""
+      name: name,
+      url: url,
+      code: code || "",
+    };
+
+    try {
+      await api.post("/api/links", req);
+
+      setName("");
+      setUrl("");
+      setCode("");
+
+      window.location.href = "/";
+    } catch (err) {
+      if (err.response && err.response.status === 409) {
+        alert("Code already exists. Please use another code.");
+        setCode("");
+      } else {
+        alert("Something went wrong.");
+      }
     }
-    await api.post("/api/links", req);
-
-    setName("");
-    setUrl("");
-    setCode("");
-
-    window.location.href = "/"; // go back to dashboard
   };
 
   return (
